@@ -144,10 +144,12 @@ const config = {
           {
             className: "code-block-error-line",
             line: "error next line",
+            block: { start: "error-start", end: "error-end" },
           },
           {
             className: "code-block-correct-line",
             line: "correct next line",
+            block: { start: "correct-start", end: "correct-end" },
           },
         ],
       },
