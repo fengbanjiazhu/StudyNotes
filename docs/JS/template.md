@@ -10,6 +10,10 @@ Type here
 
 Type here
 
+```TS
+// This will error
+```
+
 ## Title 3
 
 Type here
