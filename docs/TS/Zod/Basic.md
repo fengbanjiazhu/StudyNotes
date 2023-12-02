@@ -1,31 +1,63 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# Title 1
+# 基础
 
-Type here
+[ZOD](https://zod.dev/)是一个 TS 验证第三方库，方便实用。通过创建 Schema，来验证数据，帮助开发者。
 
-## Title 2
+## 安装
 
-Type here
+```bash
+npm i zod
+```
 
-## Title 3
+## 用法例子
 
-Type here
+创建一个简单的字符串 Schema
 
-- lists will help you
-- present the key points
-- that you want your users to remember
-  - and you may nest them
-    - multiple times
+```js title='zod'
+import { z } from "zod";
 
-## Title 4
+const mySchema = z.string();
 
-You can configure the TOC heading levels either per-document or in the theme configuration.
+mySchema.parse("tuna"); // => "tuna"
+// error next line
+mySchema.parse(12); // => throws ZodError
 
-<!-- markdown 使用```包裹 -->
+// Safe Parse (如果验证失败不抛出错误)
+// correct-start
+const result = mySchema.safeParse("tuna"); // => { success: true; data: "tuna" }
+if (result.success) return result.data;
+// correct-end
 
-```js title='test.js'
-your code;
+// error next line
+mySchema.safeParse(12); // => { success: false; error: ZodError }
+```
+
+## 基本方法
+
+```js title='zod'
+import { z } from "zod";
+
+// 原始值
+z.string();
+z.number();
+z.bigint();
+z.boolean();
+z.date();
+
+// 空类型
+z.undefined();
+z.null();
+z.void(); // 接受null或undefined
+
+// 全能类型
+// 允许 any value
+z.any();
+z.unknown();
+
+// never 类型
+// 允许没有 values
+z.never();
 ```
