@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 5
 ---
 
 # Router + TS
@@ -7,8 +7,6 @@ sidebar_position: 3
 [ZOD](https://zod.dev/)是一个 TS 验证第三方库，方便实用。通过创建 Schema，来验证数据，帮助开发者。
 
 ## 安装
-
-“？÷
 
 ```bash
 npm i zod
