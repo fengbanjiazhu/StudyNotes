@@ -18,7 +18,7 @@ npm install express express-graphql graphql --save
 
 整体类似于一个路由，当某个存在于 Schema 中的请求，通过 `/graphql` 的时候，会寻找对应 root 的 Function，并进行相关操作。
 
-### 引入 buildSchema 模块，创建 schema。
+### 引入 buildSchema 模块，创建 Schema。
 
 Schema 中，需要使用 buildSchema 语句创建一个 schema，来指明所有的 routes，将所有的 route 放入 schema 中。
 
@@ -26,7 +26,7 @@ Schema 中，需要使用 buildSchema 语句创建一个 schema，来指明所�
 其中要包括类型，且 key 值必须是唯一的。因为 route 都是独一无二的。
 :::
 
-### 创建 root(controller)。
+### 创建 Resolver (RootValue)
 
 创建业务操作逻辑，**函数名称与路径名称必须一一对应**。
 
@@ -36,7 +36,7 @@ Schema 中，需要使用 buildSchema 语句创建一个 schema，来指明所�
 
 ### 引入 graphqlHTTP 模块。
 
-使用 schema 与 root 创建服务。
+使用 schema 与 resolver 创建服务。
 
 :::note
 开启测试路由 graphiql: true。之后可以在 `localhost:端口/graphql` 查看调试页面。
