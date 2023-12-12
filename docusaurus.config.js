@@ -12,6 +12,8 @@ const config = {
   tagline: "Dinosaurs are cool",
   favicon: "img/favicon.ico",
 
+  themes: ["@docusaurus/theme-live-codeblock"],
+
   // Set the production url of your site here
   url: "https://your-docusaurus-site.example.com",
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -66,7 +68,7 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "My Site",
+        title: "Jeff's Note",
         logo: {
           alt: "My Site Logo",
           src: "img/logo.svg",
@@ -76,7 +78,7 @@ const config = {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             position: "left",
-            label: "Tutorial",
+            label: "Notes",
           },
           { to: "/blog", label: "Blog", position: "left" },
           {
@@ -132,6 +134,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
+        additionalLanguages: ["powershell", "Java"],
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
         magicComments: [
