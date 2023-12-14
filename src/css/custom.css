@@ -45,3 +45,12 @@
   padding: 0 var(--ifm-pre-padding);
   border-left: 3px solid #00ff1e80;
 }
+
+.gameControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameControl button {
+  margin: 0 1rem;
+}
