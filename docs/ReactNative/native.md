@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # RN 原生组件
 
+了解 RN 的原生组件。
+
+[点击查看官方原生组件文档](https://reactnative.dev/docs/components-and-apis)
+
 ## Styles
 
 使用 StyleSheet.create 创建一个类似 css 的对象, 使用时直接添加在类名中。
