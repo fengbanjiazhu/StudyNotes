@@ -123,3 +123,68 @@ export default MealAndFavNavigation;
 
 `tabBarIcon`：按钮 Icon
 :::
+
+## Drawer 侧滑导航
+
+侧面划出的导航，在现在的 App 中使用率也很高。
+
+Drawer 导航与之前的有些差别，他需要 [配置动画库](https://reactnavigation.org/docs/drawer-navigator#installation)，才能达到效果。
+
+第一步，安装 RN 处理动画的库。
+
+```bash
+npm install react-native-gesture-handler react-native-reanimated
+```
+
+第二步，在`App.js`或者`Index.js`的顶部(**必须确保是顶部，没有其余的语句在上面**)
+
+```bash title="App.js / Index.js"
+import 'react-native-gesture-handler';
+```
+
+第三步，安装 drawer 库
+
+```bash
+npm i @react-navigation/drawer
+```
+
+接下来就可以使用了，与之前也相同。放一个自己的例子，方便以后参考：
+
+```js title="Drawer.js"
+import React from "react";
+// correct next line
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import FilterScreen from "../screens/FilterScreen";
+import MealAndFavNavigation from "./MealAndFavNavigation";
+import LayoutAnimationTest from "../animation/LayoutAnimationTest";
+import Colors from "../constants/Colors";
+
+// correct next line
+const Drawer = createDrawerNavigator();
+
+function MainNavigation() {
+  return (
+    <Drawer.Navigator
+      initialRouteName="mealsAndFavorite"
+      screenOptions={{
+        headerShown: false,
+        drawerActiveTintColor: Colors.accentColor,
+        drawerLabelStyle: { fontFamily: "open-sans-bold" },
+      }}
+    >
+      <Drawer.Screen
+        name="mealsAndFavorite"
+        options={{ drawerLabel: "Meals" }}
+        component={MealAndFavNavigation}
+      />
+      <Drawer.Screen
+        name="Filter"
+        options={{ drawerLabel: "Filter" }}
+        component={FilterScreenWrapper}
+      />
+    </Drawer.Navigator>
+  );
+}
+
+export default MainNavigation;
+```
