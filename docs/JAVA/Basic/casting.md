@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Casting 与运算符
+# Casting
 
 ## Casting
 
@@ -38,25 +38,3 @@ byte byte2 = (byte)(myNum / 2);  // byte2 => 64
 int bigNum = 12000;
 byte byteTest = (byte)(bigNum / 2);  // byteTest => 112
 ```
-
-## 运算符
-
-运算符部分与 JS 类似
-
-![Operator1](../images/java-basic-operator-1.png)
-
-:::note
-记住 char 是可以使用这些运算的
-:::
-
-![Operator2](../images/java-basic-operator-2.png)
-![Operator3](../images/java-basic-operator-3.png)
-![Operator4](../images/java-basic-operator-4.png)
-
-:::warning
-有一点要注意的是，在 `-=` 中，其实 JAVA 做了 `Casting`
-一个例子了解一下：
-![Example](../images/java-basic-operator-example1.png)
-
-所以实际上 `X -= Y` 和 `(int) ( X - Y)` 是类似的
-:::
