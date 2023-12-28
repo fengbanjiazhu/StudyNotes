@@ -31,6 +31,38 @@ sidebar_position: 6
 所以实际上 `X -= Y` 和 `(int) ( X - Y)` 是类似的
 :::
 
+### AND 符号 &&
+
+与 JS 相同，为 `&&`
+
+```java title="&&"
+public class Hello {
+    public static void main(String[] args) {
+        int testNum = 12;
+
+        if(testNum > 0 && testNum < 20) {
+            System.out.println("test number is greater than 0 and less than 20!");
+        }
+    }
+}
+```
+
+### OR 符号 ||
+
+与 JS 相同，为 `||`
+
+```java title="||"
+public class Hello {
+    public static void main(String[] args) {
+        int testNum = 12;
+
+        if(testNum < 5 || testNum > 10) {
+            System.out.println("test number is either less than 5 or larger than 10!");
+        }
+    }
+}
+```
+
 ## 不同部分
 
 ### Equality 运算符 (==)
@@ -43,6 +75,20 @@ public class Hello {
         int testNum = 12;
 
         System.out.println(testNum == 13);   //false
+    }
+}
+```
+
+### Not Equality 运算符 (!=)
+
+因为等于号的不同，JAVA 中不等号也不同，为 `!=`。
+
+```java
+public class Hello {
+    public static void main(String[] args) {
+        int testNum = 12;
+
+        System.out.println(testNum != 20);   //true
     }
 }
 ```
