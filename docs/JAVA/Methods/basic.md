@@ -16,10 +16,10 @@ JAVA 的方法定义与 TS 大不相同，需要声明修饰符，返回类型�
 
 但是理论大概是类似的，都需要声明各种类型。
 
-:::note 语法
+:::note Declaring 语法
 
 ```Java
-修饰符 返回值类型 方法名(参数类型 参数名){
+修饰符/Modifiers 返回值类型/returnType 方法名/camelCase(参数类型 参数名){
     ...
     方法体
     ...
@@ -62,3 +62,28 @@ public class Main {
 :::note
 测试发现 JAVA 中的方法有 Hosting，即使我将 methods 放在 main 下面，也能正常调用。
 :::
+
+## 方法重载 Overload
+
+在 JAVA 中，可以创造有`相同名字`但`参数不同`的方法。
+
+```Java
+public class Overload {
+    static int plusMethod(int x, int y) {
+        return x + y;
+    }
+
+    static double plusMethod(double x, double y) {
+        return x + y;
+    }
+
+    public static void main(String[] args) {
+      // correct-start
+      int myNum1 = plusMethod(8, 5);
+      double myNum2 = plusMethod(4.3, 6.26);
+      // correct-end
+      System.out.println("int: " + myNum1);
+      System.out.println("double: " + myNum2);
+    }
+}
+```
