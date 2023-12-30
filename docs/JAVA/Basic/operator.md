@@ -6,6 +6,10 @@ sidebar_position: 6
 
 代码无法脱离运算符，大部分 JAVA 的运算符与 JS 是类似的，少部分有微妙区别但是逻辑类似。
 
+[点击查看 Java 运算符 Summary](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/opsummary.html)
+
+[点击查看 JAVA 运算符优先级 Precedence](https://www.cs.bilkent.edu.tr/~guvenir/courses/CS101/op_precedence.html)
+
 ## 相似部分
 
 ### 计算符号 +-\*/
@@ -61,6 +65,16 @@ public class Hello {
         }
     }
 }
+```
+
+### 三元表达式 Ternary
+
+三元表达式与 JS 也相同，`variable = (condition) ? expressionTrue :  expressionFalse;`
+
+```java title="Ternary"
+int time = 20;
+String result = (time < 18) ? "Good day." : "Good evening.";
+System.out.println(result);
 ```
 
 ## 不同部分
