@@ -87,3 +87,9 @@ public class Overload {
     }
 }
 ```
+
+## psvm 快速创建 main snippets
+
+使用 IntelliJ 时输入 psvm 可以快速创建 main snippets。(类似 React 的 rfce)
+
+![psvm](../images/psvm.jpg)
