@@ -21,3 +21,11 @@ sidebar_position: 1
 在左侧 `项目/project` 中，右键选中`想要查看的代码`，之后选择本地历史记录，可以查看 IntelliJ 保存在本地的代码历史，方便更改，对比不同，回溯等。
 
 ![local history](./images/history.jpg)
+
+## 设置 Snippets
+
+`command` + `,` 打开设置
+
+寻找`编辑器` - `实时模版`
+
+添加想要的 Code Snippets
