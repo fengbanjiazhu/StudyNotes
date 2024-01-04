@@ -63,31 +63,6 @@ public class Main {
 测试发现 JAVA 中的方法有 Hosting，即使我将 methods 放在 main 下面，也能正常调用。
 :::
 
-## 方法重载 Overload
-
-在 JAVA 中，可以创造有`相同名字`但`参数不同`的方法。
-
-```Java
-public class Overload {
-    static int plusMethod(int x, int y) {
-        return x + y;
-    }
-
-    static double plusMethod(double x, double y) {
-        return x + y;
-    }
-
-    public static void main(String[] args) {
-      // correct-start
-      int myNum1 = plusMethod(8, 5);
-      double myNum2 = plusMethod(4.3, 6.26);
-      // correct-end
-      System.out.println("int: " + myNum1);
-      System.out.println("double: " + myNum2);
-    }
-}
-```
-
 ## psvm 快速创建 main snippets
 
 使用 IntelliJ 时输入 psvm 可以快速创建 main snippets。(类似 React 的 rfce)
