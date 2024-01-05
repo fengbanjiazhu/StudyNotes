@@ -1,8 +1,8 @@
 {
-  "label": "流程控制",
+  "label": "条件语句",
   "position": 3,
   "link": {
     "type": "generated-index",
-    "description": "JAVA control flow Notes"
+    "description": "用来Control flow 的逻辑/条件语句,包括switch, for...loop 等等。"
   }
 }
