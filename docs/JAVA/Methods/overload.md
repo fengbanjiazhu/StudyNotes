@@ -31,7 +31,7 @@ public class Overload {
 
 我们可以使用`不同类型的参数`来调用他，JAVA 会根据参数类型来决定调用哪个方法。
 
-比如上面的 double 与 int 不同，当然也可以是 String。这么一说好像有点类似 TS 中的泛型(generics)。
+(比如上面的 double 与 int 不同)
 
 ## JAVA 如何实现 Overload？
 
