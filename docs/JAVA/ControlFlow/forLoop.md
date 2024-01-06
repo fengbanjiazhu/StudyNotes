@@ -64,7 +64,7 @@ for( String name : names ) {
 
 break 主要用在`循环语句`或者 `switch 语句`中，用来**打断**循环。
 
-使用了 break，循环就会结束，不再继续。
+使用了 break，循环就会结束，不再继续。与 JS 相同。
 
 ```Java title="Break"
 int [] numbers = {10, 20, 30, 40, 50};
@@ -82,8 +82,23 @@ for(int x : numbers ) {
 
 ### continue 关键字
 
-continue 适用于任何循环控制结构中。作用是让程序立刻跳转到下一次循环的迭代。
+continue 适用于任何循环控制结构中。作用是让程序立刻跳转到**下一次循环**的迭代。
 
-在 for 循环中，continue 语句使程序立即跳转到更新语句。
+在 for 循环中，continue 语句使程序立即跳转到`increment 更新语句`。
 
-在 while 或者 do…while 循环中，程序立即跳转到布尔表达式的判断语句。
+在 while 或者 do…while 循环中，程序立即跳转到布尔表达式的`判断语句`。
+
+与 JS 相同。
+
+```Java
+int[] numbers = {10, 20, 30, 40, 50};
+
+for (int x : numbers) {
+    if (x == 30) {
+        continue;
+    }
+    System.out.println(x);
+}
+
+// result: 10 20 40 50
+```
