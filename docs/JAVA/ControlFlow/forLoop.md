@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Loop 循环语句
+# For 循环语句
 
 ## For 循环
 
@@ -53,10 +53,6 @@ for( String name : names ) {
 }
 // result: James,Larry,Tom,Lacy,
 ```
-
-## While 循环
-
-## Do While 循环
 
 ## 循环控制语句
 
