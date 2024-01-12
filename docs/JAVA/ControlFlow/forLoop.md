@@ -35,14 +35,22 @@ Java5 引入了一种主要用于**数组**的增强型 for 循环，
 :::tip
 实际上就是 JS 中的 for...in...循环，只是 JAVA 语法不太一样。
 
-要注意 JAVA 中时刻要记得加参数类型
+要注意 JAVA 中时刻要记得加参数类型 `type variableName : arrayName`
+
+```java title="语法"
+for (type variableName : arrayName) {
+  // code block to be executed
+}
+```
+
 :::
 
-语法格式如下:
+看一下 JAVA 中的使用
 
 ```Java
 int [] numbers = {10, 20, 30, 40, 50};
 
+// highlight-next-line
 for(int x : numbers ){
     System.out.print( x + "," );
 }

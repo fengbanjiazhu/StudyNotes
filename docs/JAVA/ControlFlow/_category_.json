@@ -1,8 +1,8 @@
 {
-  "label": "循环语句",
+  "label": "控制&循环语句",
   "position": 3,
   "link": {
     "type": "generated-index",
-    "description": "用来Control flow 的逻辑/条件语句,包括switch, for...loop 等等。"
+    "description": "主要是 JAVA 中的条件逻辑(conditional statement)语句，和循环语句,包括switch, for...loop 等等。"
   }
 }

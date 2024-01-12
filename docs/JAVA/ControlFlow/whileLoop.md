@@ -11,7 +11,7 @@ While 循环主要用在不确定循环次数的时候，如一只循环直到�
 :::note Syntax
 
 ```Java 语法
-while( 布尔表达式 ) {
+while( 布尔表达式/condition ) {
   //循环内容
 }
 ```

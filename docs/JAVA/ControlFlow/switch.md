@@ -4,12 +4,6 @@ sidebar_position: 1
 
 # switch
 
-什么是流程控制？
-
-就是运行 JAVA 语句的逻辑，条件等等。实际上就是 if...else，switch， for...loop 循环
-
-## 基础使用
-
 switch 语句和 JS 中的一样，不需要说太多，放一个简单的例子。
 
 ```JAVA
