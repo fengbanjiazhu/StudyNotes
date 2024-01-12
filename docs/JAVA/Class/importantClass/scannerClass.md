@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Scanner 类
 
-Scanner 是 Java5 的新特征，我们可以通过 Scanner 类来**获取用户的输入**。
+Scanner 是 Java5 的新特征，我们可以通过 Scanner 类的**实例**来获取**用户的输入**。
 
 通过 System.in，来读取输入信息。
 
@@ -33,22 +33,31 @@ nextLine()返回的值就是刚刚输入的值。
 
 ```java title="nextLine example"
 public static String getInputFromScanner(int currentYear) {
-  // 1.创建实例
-  // correct next line
-  Scanner scanner = new Scanner(System.in);
+    // 1.创建实例
+    // correct next line
+    Scanner scanner = new Scanner(System.in);
 
-  System.out.println("Hi, What is your name?");
-  // 2.调用实例方法
-  // correct next line
-  String name = scanner.nextLine();
-  System.out.println("Hi " + name + ", Enjoy the coding!");
+    System.out.println("Hi, What is your name?");
+    // 2.调用实例方法读取输入
+    // correct next line
+    String name = scanner.nextLine();
+    System.out.println("Hi " + name + ", Enjoy the coding!");
 
-  return "";
+    System.out.println("What year were you born?");
+    boolean validDOB = false;
+    int age = 0;
+    do {
+        System.out.println("(Please enter a valid year of birth >= " + (currentYear - 125) + " and <= " + (currentYear) + " )");
+        age = checkData(currentYear, scanner.nextLine());
+        validDOB = age >= 0;
+    } while (!validDOB);
+
+    return "So you are " + age + " years old.";
 }
 ```
 
 运行效果：
-![运行 Scanner 动图](../images/Scanner-example.gif)
+![运行 Scanner 动图](../images/Scanner-example-new.gif)
 
 ## next
 
