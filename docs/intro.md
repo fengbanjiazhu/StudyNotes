@@ -6,6 +6,8 @@ sidebar_position: 1
 
 这里是个人笔记，使用 `Docusaurus` 创建。 会放入一些常用指令，笔记等。
 
+顺便放一下[官方特性文档](https://www.markdownguide.org/tools/docusaurus/)，需要的时候可以去看。
+
 ## Markdown 特性
 
 ### 加粗
@@ -69,3 +71,7 @@ const b: string = "Hello";
 ```markdown title="image"
 ![图片名称](./文件路径)
 ```
+
+### 表格
+
+表格也自带在其中，因为格式很复杂，我直接写到用户 snippet 了，只有 md 文件可以使用：`table`。

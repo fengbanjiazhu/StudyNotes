@@ -68,3 +68,7 @@ Integer.parseInt("123");
 ```
 
 :::
+
+## 其他 Class 知识点
+
+- 分组 package，[前往笔记](./package.md)
