@@ -14,7 +14,7 @@ JS 与 PHP 也接触过 OOP 编程，大家的原理都差不多？
 
 ## 回顾
 
-Class 可以参考[前面的笔记](../Basic/class.md)。
+Class 可以参考[前面的笔记](../Class/basic.md)。
 
 Object 与 JS 的概念一样，是一个 Class 的实例，他拥有着 Class 中的方法，性质等等。
 

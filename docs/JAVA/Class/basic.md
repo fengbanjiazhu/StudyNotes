@@ -71,4 +71,6 @@ Integer.parseInt("123");
 
 ## 其他 Class 知识点
 
+- 修饰符 modifier，[前往笔记](./modifiers.md)
+
 - 分组 package，[前往笔记](./package.md)
