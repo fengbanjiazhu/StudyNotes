@@ -29,3 +29,13 @@ sidebar_position: 1
 寻找`编辑器` - `实时模版`
 
 添加想要的 Code Snippets
+
+## 代码自动补全
+
+### Getter & Setter
+
+通过 `代码` - `生成` (或直接 `command + n`) - `getter`
+
+选择对应字段，来自动生成 getter 函数。
+
+具体可以看[getter 相关笔记](../Class/setterAndGetter)

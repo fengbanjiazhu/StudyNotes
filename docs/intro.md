@@ -75,3 +75,20 @@ const b: string = "Hello";
 ### 表格
 
 表格也自带在其中，因为格式很复杂，我直接写到用户 snippet 了，只有 md 文件可以使用：`table`。
+
+### 折叠
+
+没想到啊，markdown 是可以使用 html 嵌入的。
+所以折叠使用的是 html 语法
+
+```html
+<details>
+  <summary>标题写这里</summary>
+  <div>折叠的内容写这里</div>
+</details>
+```
+
+<details>
+  <summary>标题写这里</summary>
+  <div>折叠的内容写这里</div>
+</details>
