@@ -6,6 +6,8 @@ sidebar_position: 1
 
 这里是个人笔记，使用 `Docusaurus` 创建。 会放入一些常用指令，笔记等。
 
+这里贴一下找到的[markdown 语法介绍](https://keatonlao.gitee.io/a-study-note-for-markdown/syntax/)。
+
 顺便放一下[官方特性文档](https://www.markdownguide.org/tools/docusaurus/)，需要的时候可以去看。
 
 ## Markdown 特性
