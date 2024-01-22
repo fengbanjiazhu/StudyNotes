@@ -44,7 +44,7 @@ public class Car {
 与 JS 不同，我们在 IntelliJ 中，可以通过一键自动设置 Getter，省去手动编写的复杂。
 
 <details>
-  <summary>代码-生成(或者 `command + n`)</summary>
+  <summary>代码 - 生成(或者 `command + n`) - getter</summary>
   <div>
   ![example](./images/getterAndSetter/getter-1.JPG)
   </div>
