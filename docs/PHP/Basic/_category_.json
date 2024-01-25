@@ -1,8 +1,8 @@
 {
-  "label": "TS基础",
+  "label": "基础",
   "position": 1,
   "link": {
     "type": "generated-index",
-    "description": "TypeScript Basic Notes"
+    "description": "PHP Basic Notes"
   }
 }
