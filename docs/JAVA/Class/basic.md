@@ -31,7 +31,7 @@ Java 是一门非常强大和流行的编程语言，它提供了许多自带的
 
 静态字段 class 中定义的时候，需要使用 static 关键字。
 
-字段 Value 会保存在一个特殊的 memory 位置中。
+字段 Value 会保存在一个特殊的 memory 位置中，**所有的实例都可以访问到这个字段**。
 
 可以通过 `Class.fieldName` 来访问到该字段。
 
@@ -57,11 +57,13 @@ Integer.MAX_VALUE
 
 ### 方法 Methods
 
+方法包括 static 方法与 Instance 实例方法，他们的特性有所不同。
+
 :::note Static 静态方法
 
-静态方法在 class 中定义的时候，需要使用 static 关键字。
+静态方法在 class 中定义的时候，需要使用 static 关键字，静态方法可以**直接在 Class 上调用**。
 
-静态方法可以**直接在 Class 上调用**，
+静态方法一般不会需要实例上的数据。
 
 ```Java
 Integer.parseInt("123");
@@ -80,6 +82,10 @@ Integer.parseInt("123");
 ```
 
 :::
+
+我们需要鉴别如何制定一个方法，比如他是静态还是实例？
+
+主要通过一点：他是否需要 Field 来调用，如果需要的话，那我们应该先创建 fields(先实例化)，再调用。
 
 ## 其他 Class 知识点
 
