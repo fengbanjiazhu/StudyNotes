@@ -8,22 +8,32 @@ sidebar_position: 2
 
 继承就是 child class 继承 parent class 的特征和行为，使得子类对象（实例）具有父类的实例 Field 和 Method，或子类从父类继承 Method，使得子类具有父类相同的行为
 
-## Extend 继承
+## Extends 继承
 
-JAVA 使用 extend 继承(与 JS 一样)
+JAVA 使用 extend 继承(与 JS 一样)，使用 super()来调用父 Class 的构造函数。
+
+与 JS 不同的是，不是调用 constructor() 而是创建一个新的(如下面的 public Child())
 
 ```java
 class Parent {
+  private String name;
+  public Parent (String name) {
+    this.name = name;
+  }
 }
 
 class Child extends Parent {
+  public Child () {
+    super("Child name")
+  }
 }
 ```
 
 ## 为什么需要继承
 
-减少代码重复，
-假设之前为了动物园游戏创建了了一些 Bird 相关的类，現在想要扩充，让动物园拥有像是 Chicken、Chicken、Sparrow 等更多鸟的种类，那麼您可以 Extend Bird Class，这样 Bird 中所使用的**功能**都可以留下來，並基於它擴充一些新的 Chicken、Sparrow 类，不需要重写功能，也不需要重复代码，通过「扩充」（extends）原先已定义好的 Class。
+最重要就是减少代码重复，类似于分类整理，将公共方法创建一遍，在各个地方调用。
+
+假设之前为了动物园游戏创建了了一些 Bird 相关的类，現在想要扩充，让动物园拥有像是 Chicken、Chicken、Sparrow 等更多鸟的种类，那麼可以 Extend Bird Class，这样 Bird 中所使用的**功能**都可以留下來，並基於它擴充一些新的 Chicken、Sparrow 类，**不需要重写功能，也不需要重复代码**，通过「扩充」（extends）原先已定义好的 Class。
 
 ### 一个例子
 
@@ -105,6 +115,7 @@ public class Animal {
 }
 // highlight-next-line
 public class Penguin  extends  Animal{
+
 }
 ```
 

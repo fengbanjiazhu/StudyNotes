@@ -23,6 +23,14 @@ sidebar_position: 3
 - 性能: 可以通过剖析确定哪些模块影响了系统的性能提高软件的可重用性
 - 降低构建大型系统的风险: 即使整个系统不可用，但是这些独立的模块却有可能是可用的
 
+## 相关知识点
+
+- [Class 中的 getter 与 setter](../Class/setterAndGetter)
+- [Class 中的 私有字段](../Class/basic.md#字段-field)
+- [Class 中的 修饰符](../Class/modifiers)
+- [Class 中的构造函数](../Class/constructor)
+- [Class 中的 POJO](../Class/POJO)
+
 ## 案例
 
 以下 Person 类封装 name、gender、age 等属性，外界只能通过 get() 方法获取一个 Person 对象的 name 属性和 gender 属性，而无法获取 age 属性，但是 age 属性可以供 work() 方法使用。
