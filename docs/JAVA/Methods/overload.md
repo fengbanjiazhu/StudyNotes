@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# 方法重载 Overload
+# 方法重载 Overloading
 
 在 JAVA 中，可以创造有`相同名字`但`参数不同`的方法，这个就叫做 Overload。
 
@@ -124,3 +124,11 @@ public class OverloadTest {
 // Anonymous has earned 1800 scores
 // 2000
 ```
+
+## 补充
+
+通常 overloading 发生在同 Class 的方法中，但也可以被子 Class 重载。
+
+因为继承的特性，子类可以继承父类的方法，但同时它也可以拥有一个自己的重载方法。(换言之，同一个名字/参数的方法可能会有两种不同的 version)
+
+但是当我们想要改写，覆盖掉父类的 Method(同名同参数的方法)，我们需要使用的是 Overriding，[具体请查看这篇笔记](../Advanced/annotaion#override-重写)。
