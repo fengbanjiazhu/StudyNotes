@@ -151,9 +151,11 @@ public class C implements A,B {
 
 ### Super & This
 
-super ：我们可以通过 super 关键字来实现对父类成员的访问，用来**引用当前对象的 parent class**。
+super ：我们可以通过 super 关键字来实现对父 Class 成员的访问，用来**引用当前对象的 parent class**。
 
-this ：指向自己的引用。
+this ：指向自己，也就是当前 Class。
+
+- this 关键字常用于构建函数，setter，有时候也用于 getter
 
 ```java
 class Animal {
@@ -192,6 +194,26 @@ animal : eat
 
 */
 ```
+
+### Super() & This()
+
+注意一下，当调用 super() 与 this() 的时候，与关键字是不同的含义。是调用对应的构造函数。
+
+:::danger
+构造函数可以调用 super()或者 this()，但是**两者不能同时调用**。
+
+在构造函数中调用 this() / super() 时，**必须在第一行调用**。
+:::
+
+#### super()
+
+唯一可以调用父 Class 构建函数的方法，就是调用 super()函数。我们在 JS 中创建 Class 也看过很多遍了。
+
+Java 编译器会默认调用 super()，即使我们没有添加它。并且它自动调用没有参数的构造函数。
+
+#### this()
+
+使用 this() 调用一个构造函数，可以从同 class 中的另一个 overloaded 构造函数中调用。这个技巧就叫做 constructor chaining，目的是减少重复代码。[参考这篇 constructor chaining 笔记](../Class/constructor#构造函数-chaining)。
 
 ### Final
 
