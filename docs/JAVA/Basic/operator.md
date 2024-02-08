@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# 运算符
+# Operator 运算符
 
 代码无法脱离运算符，大部分 JAVA 的运算符与 JS 是类似的，少部分有微妙区别但是逻辑类似。
 
