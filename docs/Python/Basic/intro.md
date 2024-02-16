@@ -35,3 +35,14 @@ print(num)
 ```
 
 书写如上 Code 之后，点击 VS Code 右上角的运行即可
+
+:::danger
+有一点需要注意，python 的编程中，代码，命令前不能有缩进(indent)或者空格。
+
+```python
+# error next line
+  print("Hello Jeff")
+# 此处会报错
+```
+
+:::
