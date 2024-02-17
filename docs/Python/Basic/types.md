@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# 变量类型
+# 变量类型与转换
 
 变量类型的概念不需要做多赘述了。
 
@@ -38,6 +38,10 @@ a, b, c = 1, 2, "john"
 - Set（集合）
 - Dictionary（字典-实际上就是 Object）
 
+:::note
+想要检查数据类型，使用 type(variable) 函数。
+:::
+
 ### String
 
 字符串目前没有看到与 JS 差别太大的地方，列举一些常用方法
@@ -69,3 +73,54 @@ isLogin = False
 ```
 
 :::
+
+## 类型转换
+
+在 python 中，有地方需要我们做类型转换。我们先看问题：
+
+```ts title="TS"
+const num: number = 7;
+console.log("Hi Jeff, have you finished chapter " + num + "?");
+```
+
+```Java title="Java"
+int num = 7;
+System.out.println("Hi Jeff, have you finished chapter " + num + "?" )
+```
+
+这两个在 TS 和 Java 的运算中，不会出现问题，都会打印出同样的结果。
+
+:::warning 但是 python 不可以
+
+我们不能把数字直接拼接到字符串中。
+
+```python title="Python"
+num = 7
+# error next line
+print("Hi Jeff, have you finished chapter " + num + "?" )
+
+# TypeError: can only concatenate str (not "int") to str
+```
+
+:::
+
+于是为了解决问题，我们需要手动来更改类型，使用 `str()` 函数。
+
+```python title="Python手动转换类型"
+num = 7
+# correct next line
+numToStr = str(num)
+print("Hi Jeff, have you finished chapter " + numToStr + "?" )
+```
+
+### 类型转换方法
+
+| Syntax   | Description                                       |
+| -------- | ------------------------------------------------- |
+| int(x)   | 将 x 转换为一个整数                               |
+| float(x) | 将 x 转换到一个浮点数                             |
+| str(x)   | 将对象 x 转换为字符串                             |
+| tuple(s) | 将序列 s 转换为一个元组                           |
+| list(s)  | 将序列 s 转换为一个列表                           |
+| set(s)   | 转换为可变集合                                    |
+| dict(d)  | 创建一个字典。d 必须是一个 (key, value)元组序列。 |
