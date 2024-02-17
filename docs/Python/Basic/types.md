@@ -60,6 +60,17 @@ len("String")
 
 Float 也没有太大区别
 
+#### round(float,roundTo)
+
+返回四舍五入的数字
+
+```python
+round(2.6666)
+# return 3
+round(2.6666,2)
+# return 2.67
+```
+
 ### Boolean
 
 布尔值使用方式也没有区别。
@@ -124,3 +135,26 @@ print("Hi Jeff, have you finished chapter " + numToStr + "?" )
 | list(s)  | 将序列 s 转换为一个列表                           |
 | set(s)   | 转换为可变集合                                    |
 | dict(d)  | 创建一个字典。d 必须是一个 (key, value)元组序列。 |
+
+### f-string
+
+当然 Python 也有自己的 Template literals，不然每个数据都转换那不得累死？
+
+它叫做`f-string`。f-string 格式化字符串以 f 开头，后面跟着字符串，字符串中的表达式用大括号 {} 包起来，它会将变量或表达式计算后的值替换进去
+
+下面放一个练习案例。
+
+```python title="f-string案例"
+print("Welcome to the calculator")
+price = float(input("What was the total bill? $"))
+
+tipPercent = int(input("What percentage tip would you like to give? 10, 12, or 15? "))
+
+numOfPeople = int(input("How many people are there to split the bill? "))
+
+pricePerPerson = price * (1 + tipPercent * 0.01) / numOfPeople
+
+print(f"You need to pay ${round(pricePerPerson,2)} dollars")
+```
+
+![演示](./images/tip-calculator.gif)
