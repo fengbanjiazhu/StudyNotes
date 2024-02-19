@@ -44,7 +44,23 @@ a, b, c = 1, 2, "john"
 
 ### String
 
-字符串目前没有看到与 JS 差别太大的地方，列举一些常用方法
+字符串大体与 JS，Java 的类型相同，但是也有需要注意的地方。列举一些常用方法
+
+#### 字符串乘法
+
+在 python 中，字符串可以乘法运算，结果看作一个 copy 几次就好。
+
+:::note
+Python allows multiplication of strings (and other things), and mostly treats it as something like "make that many copies of the thing".
+:::
+
+```python
+a = "Hello"
+a = a * 2
+print(a)
+
+# "HelloHello"
+```
 
 #### len(String)
 
