@@ -61,8 +61,12 @@ print(total)
 
 Python 的打印语法很简单，与 JS 的 `console.log()`，Java 的 `System.out.println()`不同，Python 的贼简单`print()`
 
+Python 打印默认会另起一行，如果想要不另起一行，传入第二个 params 即可。
+
 ```python title="Python朴实无华的打印"
 print("Hi Jeff")
+
+print("You selected the ", end="")
 ```
 
 ### input
