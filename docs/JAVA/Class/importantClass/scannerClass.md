@@ -25,7 +25,29 @@ Scanner sc = new Scanner(new File("nameOfFileOnFileSystem"));
 
 :::
 
-## nextLine
+## Methods
+
+[在这里可以看到其他所有的方法](https://www.runoob.com/manual/jdk11api/java.base/java/util/Scanner.html)
+
+| 类型       | 方法                       | 描述                                       |
+| ---------- | -------------------------- | ------------------------------------------ |
+| BigDecimal | nextBigDecimal()           | 将输入的下一个标记扫描为 BigDecimal 。     |
+| BigInteger | nextBigInteger()           | 将输入的下一个标记扫描为 BigInteger 。     |
+| BigInteger | nextBigInteger​(int radix) | 将输入的下一个标记扫描为 BigInteger 。     |
+| boolean    | nextBoolean()              | 将输入的下一个标记扫描为布尔值并返回该值。 |
+| byte       | nextByte()                 | 将输入的下一个标记扫描为 byte 。           |
+| byte       | nextByte​(int radix)       | 将输入的下一个标记扫描为 byte 。           |
+| double     | nextDouble()               | 将输入的下一个标记扫描为 double 。         |
+| float      | nextFloat()                | 将输入的下一个标记扫描为 float 。          |
+| int        | nextInt()                  | 将输入的下一个标记扫描为 int 。            |
+| int        | nextInt​(int radix)        | 将输入的下一个标记扫描为 int 。            |
+| String     | nextLine()                 | 使此扫描器前进超过当前行并返回跳过的输入。 |
+| long       | nextLong()                 | 将输入的下一个标记扫描为 long 。           |
+| long       | nextLong​(int radix)       | 将输入的下一个标记扫描为 long 。           |
+| short      | nextShort()                | 将输入的下一个标记扫描为 short 。          |
+| short      | nextShort​(int radix)      | 将输入的下一个标记扫描为 short 。          |
+
+### nextLine
 
 先放一下 nextLine 的使用案例，练习的时候使用了 nextLine 的方法。
 
@@ -57,9 +79,9 @@ public static String getInputFromScanner(int currentYear) {
 ```
 
 运行效果：
-![运行 Scanner 动图](../images/Scanner-example-new.gif)
+![运行 Scanner 动图](../images/scanner/Scanner-example-new.gif)
 
-## next
+### next
 
 next 与 nextLine 的使用情景类似，语法也类似，都是调用 Scanner 实例上的方法来获取。
 
@@ -86,25 +108,105 @@ public class ScannerDemo {
 }
 ```
 
-## next 与 nextLine 差别
+### next 与 nextLine 差别
 
 next() 与 nextLine() 区别
 
-### next():
+#### next():
 
-- 一定要读取到有**效字符后**才可以结束输入。
+- 一定要读取到**有效字符后**才可以结束输入。
 - 对输入有效字符之前遇到的**空白**，next() 方法**会自动去掉**。
 - 只有输入有效字符后才将其**后面输入的空白**作为**分隔符或者结束符**。
 
 `next() 不能得到带有空格的字符串。`
 
-### nextLine()：
+#### nextLine()：
 
 - 以 Enter 为结束符,也就是说 nextLine()方法返回的是**输入回车之前的所有字符**。
 - 可以获得空白。
 
 (逻辑上说，输入 enter 为结束似乎比较好一点)
 
-## 获取输入的数字
+### 问题
 
-之后在写，暂时没用到。可以参考菜鸟文档 [Scanner 类](https://www.runoob.com/java/java-scanner-class.html)
+Dr.Luke 演示了一个问题，在这里复现一下
+
+```java
+import java.util.Scanner;
+
+class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("How many people? ");
+		int n = sc.nextInt();
+		//3\n
+
+		for (int i = 0; i < n; i++) {
+			System.out.print("What is the name of the person? ");
+			String name = sc.nextLine();
+			System.out.print("What is their favourite number? ");
+			int num = sc.nextInt();
+			System.out.println(name + "'s favourite number is " + num);
+		}
+	}
+}
+```
+
+我们的代码看似没问题，逻辑也正确，但是却报错了？
+![报错](../images/scanner/issue/scanner-error1.jpg)
+
+:::warning 原因
+实际上当我们在这一步的时候，发生了一些事情：
+
+```java
+int n = sc.nextInt();
+//3\n
+```
+
+- 我们输入了 3，enter。
+- 计算机接收到的信息是 `3\n`
+- nextInt()会提取出 3 这个 int，**但是将\n 留在原地**
+- 此时的\n 就变成了下一个输入，也就是 `String name = sc.nextLine();`的输入。
+- 此时计算机继续前往下一步，想要接收`int num = sc.nextInt();`的输入，而我们刚好输入了"Jeff"
+- 因为类型不一致(期望 int，得到 String)，程序报错。
+
+**为了证明，我们可以查看一下**
+
+![报错](../images/scanner/issue/scanner-error2.jpg)
+
+果然发现，首先是两个问题同时抛出(本应该问题 1-回答-问题 2-回答)，
+其次就是打印结果`'s favourite number is 2`
+
+:::
+
+#### 解决办法
+
+结果就是**每一次使用 nextInt()的时候都会发生这个问题**，所以每次都在后面加一个`sc.nextLine();`，提取掉\n 这个字符
+
+```java
+import java.util.Scanner;
+
+class Main {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("How many people? ");
+		int n = sc.nextInt();
+        // correct next line
+		sc.nextLine();
+
+		for (int i = 0; i < n; i++) {
+			System.out.print("What is the name of the person? ");
+			String name = sc.nextLine();
+			System.out.print("What is their favourite number? ");
+			int num = sc.nextInt();
+            // correct next line
+		    sc.nextLine();
+			System.out.println(name + "'s favourite number is " + num);
+		}
+	}
+}
+```
+
+![报错](../images/scanner/issue/error_fixed.gif)
