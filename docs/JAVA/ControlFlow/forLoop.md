@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# For 循环语句
+# For 与 For-Each 循环
 
 ## For 循环
 
@@ -28,7 +28,7 @@ for (int i = 1; i <= 10; i++) {
 // result: print 1 - 8
 ```
 
-### Enhanced For 循环
+## Enhanced For 循环 (For-Each)
 
 Java5 引入了一种主要用于**数组**的增强型 for 循环，
 
