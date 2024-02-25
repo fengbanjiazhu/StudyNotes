@@ -1,12 +1,12 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # 基本数据类型
 
 Java 语言提供了八种基本类型。六种数字类型（四个整数型，两个浮点型），一种字符类型，还有一种布尔型。
 
-![types](../images/java-basic-type.png)
+![types](../../images/java-basic-type.png)
 
 :::note
 JAVA 中常用的数字类型是 int，Double。
@@ -151,7 +151,7 @@ Char 只能存一个字符有什么用？例子：可以用来存储游戏中用
 每个 char 都有编码，创建 char 的时候也可以根据编码来创建：
 [char 编码网址](https://symbl.cc/en/)
 
-![char](../images/java-basic-char.png)
+![char](../../images/java-basic-char.png)
 
 ```java title="Char 编码"
 char niChar = '\u4F60';

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 2
 ---
 
 # 数组
@@ -39,7 +39,7 @@ int[] values = new int[3];
 String[] words = new String[2];
 ```
 
-插播一下，数组循环可以回去看[这篇笔记](../ControlFlow/forLoop#enhanced-for-循环-for-each)
+插播一下，数组循环可以回去看[这篇笔记](../../ControlFlow/forLoop#enhanced-for-循环-for-each)
 
 #### 初始化
 
