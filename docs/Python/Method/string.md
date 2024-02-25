@@ -22,3 +22,11 @@ print(str.upper())
 # pythonisfun
 # PYTHONISFUN
 ```
+
+## len(String)
+
+返回字符串的 length，与 Js 的不同，JS 是直接将字符串的 length 作为属性输出，如 Str.length
+
+```python
+len("String")
+```

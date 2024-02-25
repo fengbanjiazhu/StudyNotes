@@ -46,6 +46,8 @@ a, b, c = 1, 2, "john"
 
 字符串大体与 JS，Java 的类型相同，但是也有需要注意的地方。列举一些常用方法
 
+与 JS 类似，更多方法可以查看[这篇笔记](../Method/string)
+
 #### 字符串乘法
 
 在 python 中，字符串可以乘法运算，结果看作一个 copy 几次就好。
@@ -60,14 +62,6 @@ a = a * 2
 print(a)
 
 # "HelloHello"
-```
-
-#### len(String)
-
-返回字符串的 length，与 Js 的不同，JS 是直接将字符串的 length 作为属性输出，如 Str.length
-
-```python
-len("String")
 ```
 
 ### Number
@@ -103,13 +97,15 @@ isLogin = False
 
 ### Tuple（元组）
 
+元组(tuple)，是不可变的列表（即，一旦创建，就不能更改）。
+
 ```python
 a = (1, 2, 3)
 ```
 
 ### List（列表-实际上就是 Array）
 
-与 JS 类似
+与 JS 类似，更多方法可以查看[这篇笔记](../Method/list)
 
 ```python
 a = [1, 2, 3]
@@ -117,7 +113,7 @@ a = [1, 2, 3]
 
 ### Set（集合）
 
-与 JS 的集合类似，不能有重复值。
+与 JS 的集合(Set)类似，不能有重复值 - 会自动过滤掉重复字段
 
 ```python
 a = {1, 2, 2, 3}
@@ -127,11 +123,9 @@ print(a)
 
 ### Dictionary（字典-实际上就是 Object）
 
-```python
-a = {"x" : 1, "y" : 0.3, "z" : 10.6}
-print(a)
-# {'x': 1, 'y': 0.3, 'z': 10.6}
-```
+Dictionary, 在内部称为 dicts，实际上就是 Python 的 Object，键值对数据。
+
+[具体笔记看这里](./types/dictionary.md)
 
 ## 类型转换
 
