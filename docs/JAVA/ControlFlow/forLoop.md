@@ -60,6 +60,28 @@ for (;;) {
 // result: run code until enter 1
 ```
 
+#### 无 body 循环
+
+我们在 Java 中，可以进行无参数循环，如下
+
+```java
+for (int i = 0; i < 10; ++i);
+```
+
+这段代码似乎起不到什么作用，但是我们可以换个代码来看看：
+
+```java
+int sum = 0;
+for (int i = 0; i <= 10; sum += i++);
+
+System.out.println(sum);
+// 55
+
+for (int i = 0, sum = 0; i <= 10; System.out.println(sum += i++));
+```
+
+我们可以通过将部分语句直接写入**循环体**，来达到一些目的。
+
 ## Enhanced For 循环 (For-Each)
 
 Java5 引入了一种主要用于**数组**的增强型 for 循环，

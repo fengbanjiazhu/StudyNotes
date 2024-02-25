@@ -2,13 +2,13 @@
 sidebar_position: 4
 ---
 
-# 控制循环
+# 控制循环关键字
 
 有一些语句可以控制循环，方便我们停止，或者跳出循环。
 
 这些语句可以用在 for loop 中，也可以用在 while loop 或者 switch 中。
 
-## break 关键字
+## break (终止)
 
 break 主要用在`循环语句`或者 `switch 语句`中，用来**打断**循环。
 
@@ -44,7 +44,7 @@ do {
 // result: 1,2,3,4,5
 ```
 
-## continue 关键字
+## continue (跳过本次)
 
 continue 适用于任何循环控制结构中。作用是让程序立刻跳转到**下一次循环**的迭代。
 
