@@ -6,7 +6,7 @@ sidebar_position: 1
 
 最常见的控制语句，Python 的 If elif 和 JS，Java 的语法不一样。
 
-:::tips 主要区别
+:::tip 主要区别
 
 - condition 不包裹在括号中；
 - 需要使用 冒号`:` 衔接在条件后面；
