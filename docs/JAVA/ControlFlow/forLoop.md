@@ -28,6 +28,38 @@ for (int i = 1; i <= 10; i++) {
 // result: print 1 - 8
 ```
 
+### for 循环的神奇应用
+
+#### 缺失两个参数
+
+Java 中的 for loop 可以有各种神奇的应用效果，我们来简单看一下(是 Dr Luke 在对比 For loop 与 While loop 时展示的)
+
+```JAVA title="模拟while loop"
+int i = 1;
+
+// correct next line
+//注意这里缺失的两个参数
+for (;i <= 10;) {
+    System.out.println(i);
+    i++;
+}
+// result: print 1 - 10
+```
+
+#### 缺失三个参数
+
+```JAVA title="模拟while loop"
+int i = 1;
+
+// correct next line
+//注意这里缺失的三个参数
+for (;;) {
+    System.out.print("Enter 1 if you want to stop: ");
+    if (sc.nextInt() == 1) break;
+}
+// result: run code until enter 1
+```
+
 ## Enhanced For 循环 (For-Each)
 
 Java5 引入了一种主要用于**数组**的增强型 for 循环，
@@ -43,6 +75,10 @@ for (type variableName : arrayName) {
 }
 ```
 
+:::
+
+:::warning
+不能应用于 String， 也就是不能把 String 中的 char 来循环。
 :::
 
 看一下 JAVA 中的使用
