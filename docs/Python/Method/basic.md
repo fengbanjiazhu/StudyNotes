@@ -23,3 +23,16 @@ Python 的函数参数也可以定义类型，总体感觉有点像 TS
 def nameOfFunc(a:int,b:int) -> int:
   return a + b
 ```
+
+## 参数位置
+
+Python 的函数与 JS 和 TS 有点不同，可以改变 args 的位置，而不影响函数的调用。
+
+```python
+def msg(name, msg):
+    print(name + ", you have a message: " + msg)
+
+# correct next line
+msg(msg="Hi!", name="Luke")
+# 我们可以手动指定参数是哪个
+```
