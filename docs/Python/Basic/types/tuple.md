@@ -80,8 +80,20 @@ for i in range(len(primes)):
 与其他遍历方式一样
 
 ```python
-primes = (2, 3, 5, 7, 11)
+tupleExample = [('Luke', 50), ('Cat', 99), ('Nick', 98), ('Mazza', 98)]
+print(tupleExample)
+# [('Luke', 50), ('Cat', 99), ('Nick', 98), ('Mazza', 98)]
+print(tupleExample[0])
+# ('Luke', 50)
+print(tupleExample[0][0])
+# Luke
+print(tupleExample[0][1])
+# 50
 
-for p in primes:
-    print(p)
+for element in tupleExample:
+	print(element)
+# ('Luke', 50)
+# ('Cat', 99)
+# ('Nick', 98)
+# ('Mazza', 98)
 ```
