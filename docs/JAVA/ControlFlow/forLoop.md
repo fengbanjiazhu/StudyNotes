@@ -119,3 +119,17 @@ for( String name : names ) {
 }
 // result: James,Larry,Tom,Lacy,
 ```
+
+### forEach 写法
+
+也可以使用 forEach 写法，不过只能作用于 ArrayList 上面。要查看 ArrayList 笔记，[查看这篇](../Class/importantClass/arrayList)。
+
+```java
+ArrayList<String> names = new ArrayList<String>();
+    names.add("Jeff");
+    names.add("Sara");
+    names.forEach(name -> {
+    System.out.println(name);
+});
+// print "Jeff" "Sara"
+```
