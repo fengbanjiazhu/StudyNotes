@@ -10,6 +10,16 @@ sidebar_position: 4
 
 创建构造函数时，应该使用一个恰当的修饰符，来控制创建新 Class 实例的权限。
 
+:::info Syntax
+
+```java
+<access modifier> class <name> {
+  <data and methods>
+}
+```
+
+:::
+
 ```java title="Car.java"
 public class Car {  // Class declaration
 
