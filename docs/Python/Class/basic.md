@@ -57,11 +57,17 @@ class Main {
 ```python
 class Foo:
 
-    def __init__(self, num):
+    def __init__(self, num:int):
         self.secret = num
 
-    def secret_mult(self, num):
+    def secret_mult(self, num:int) ->int:
         return num * self.secret
+
+    def get_number(self)  -> int:
+        return  self.secret
+
+    def set_number(self, num:int):
+        self.secret = num
 
 obj = Foo(3)
 print(obj.secret)

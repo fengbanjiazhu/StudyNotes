@@ -6,7 +6,9 @@ sidebar_position: 2
 
 继承是 java 面向对象编程技术的一块基石，因为它允许创建分等级层次的类。
 
-继承就是 child class 继承 parent class 的特征和行为，使得子类对象（实例）具有父类的实例 Field 和 Method，或子类从父类继承 Method，使得子类具有父类相同的行为
+对象可以从其他对象继承属性。这允许对象的子类型存在，并支持子类型的共同方面的重用，同时允许良好划分的差异。
+
+也就是 child class 继承 parent class 的特征和行为，使得子类对象（实例）具有父类的实例 Field 和 Method，或子类从父类继承 Method，使得子类具有父类相同的行为
 
 而实际上，我们在使用 Java 的过程中处处都存在着继承，具体可以查看[java.lang 这篇笔记](../Class/java_lang/java_lang)
 
