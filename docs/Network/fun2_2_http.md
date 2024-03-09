@@ -61,7 +61,7 @@ HTTP 链接分为两种，**持久链接**(`Persistent HTTP`)和 **非持久链�
 <details>
   <summary>点击查看两种链接对比(图片)</summary>
   <div>
-    ![常见 APP 使用的协议](./images/persistent_non_persistent_http.png)
+    ![两种链接对比](./images/persistent_non_persistent_http.png)
   </div>
 </details>
 
@@ -83,9 +83,19 @@ HTTP 链接分为两种，**持久链接**(`Persistent HTTP`)和 **非持久链�
 <details>
   <summary>点击查看持久链接响应(图解)</summary>
   <div>
-    ![常见 APP 使用的协议](./images/persistent_HTTP_response_time.png)
+    ![持久链接建立图解](./images/persistent_HTTP_response_time.png)
   </div>
 </details>
+
+:::note 使用餐厅点单类比持久链接
+
+- 您好服务员(RTT)
+- 请给我菜单(RTT)
+  - 等待菜单时间
+- 请给我汉堡，可乐(RTT)
+  - 等待汉堡时间，等待可乐时间
+
+:::
 
 #### 响应速度
 
@@ -108,9 +118,23 @@ HTTP 链接分为两种，**持久链接**(`Persistent HTTP`)和 **非持久链�
 <details>
   <summary>点击查看非持久链接响应(图解)</summary>
   <div>
-    ![常见 APP 使用的协议](./images/non_persistent_HTTP_response_time.jpg)
+    ![非持久链接建立图解](./images/non_persistent_HTTP_response_time.jpg)
   </div>
 </details>
+
+:::note 使用餐厅点单类比非持久链接
+
+- 您好服务员(RTT)
+- 请给我菜单(RTT)
+  - 等待菜单时间
+- 您好服务员(RTT)
+- 请给我汉堡(RTT)
+  - 等待汉堡时间
+- 您好服务员(RTT)
+- 请给我可乐(RTT)
+  - 等待可乐时间
+
+:::
 
 #### 响应速度
 
@@ -125,3 +149,24 @@ HTTP 链接分为两种，**持久链接**(`Persistent HTTP`)和 **非持久链�
   - N \* (加载文件的时间，包括 html 文件，资源 1，资源 2...)
 
 :::
+
+## HTTP 信息
+
+HTTP 表头中的 Date 是请求的时间。
+
+HTTP 表头中如果有 keep-alive 就是一个持久链接。
+
+请求中，可以看到请求类型，如 GET，POST，还有协议版本，如 HTTP 1.1。还有浏览器类型，为了知道是否可以运行 JS 代码。
+
+Content length：告诉你内容的大小，单位为 bytes
+
+还有很多暂时不说了。后面如果遇到需要的时候我在补充。
+
+### wireshark 例子
+
+<details>
+  <summary>点击查看wireshark捕获http请求例子</summary>
+  <div>
+    ![常见 APP 使用的协议](./images/wireshark_http_example.jpg)
+  </div>
+</details>
