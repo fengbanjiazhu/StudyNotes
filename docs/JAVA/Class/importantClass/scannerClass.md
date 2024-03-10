@@ -9,6 +9,8 @@ Scanner 是 Java5 的新特征，我们可以通过 Scanner 类的**实例**来�
 通过 System.in，来读取输入信息。
 
 ```java title="创建 Scanner 对象的基本语法"
+import java.util.Scanner;
+...
 Scanner sc = new Scanner(System.in);
 ```
 
