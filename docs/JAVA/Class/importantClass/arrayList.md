@@ -10,15 +10,28 @@ ArrayList 继承了 AbstractList ，并实现了 List 接口。
 
 真正的 TS 数组！
 
-## 创建格式
+ArrayList 的**查找和修改效率很高**，但是增加和删除的效率略低(与 [LinkedList](./linkedList) 相比)
+
+## 推荐使用 ArrayList 的情况
+
+- 频繁访问列表中的某一个元素。
+- 只需要在列表末尾进行添加和删除元素操作。
+
+## 创建 ArrayList
 
 ```java
 // 引入 ArrayList 类
 import java.util.ArrayList;
 
 // 初始化
-ArrayList<Type> objectName =new ArrayList<Type>();　
+ArrayList<E> objectName = new ArrayList<E>();　
 ```
+
+:::tip
+这里演示了范型，也是 Java 第一次接触这个，虽然大部分应该和 TS 一样，但是最好还是建立[一篇笔记来说](../../Advanced/generic)。
+
+这里的 E 类型参数只能由类名/类型替换。不能使用原始类型，而是[包装类](../../Class/wrapperClass/basic)。
+:::
 
 ## 方法
 
@@ -35,9 +48,9 @@ names.add("Jeff");
 names.add("Sara");
 ```
 
-#### 指定位置添加
+#### 插入元素
 
-add(int index, E element) 在位置 index 处添加元素。
+add(int index, E element) 在位置 index 处插入元素。
 
 如果这在当前列表的末尾之前，它会将所有元素向右移动，以免覆盖任何内容。
 
@@ -153,3 +166,21 @@ names.forEach(name -> {
 // Jeff
 // Sara
 ```
+
+## 优缺点
+
+ArrayList 还有许多方法、相关类和属性还没有涉及（也不准备涉及），但可以列举一些优缺点。
+
+### 优点
+
+- 自动调整大小（它不仅仅是一次增加或减少一个元素，它会进行更智能的操作）。
+
+- 在内部实际上使用了一个数组（嗯，一系列数组）
+
+  - 因此对于访问和迭代（即 get 和 set 工作得很快，这意味着 for-each 也很快，而且 add 通常和数组一样快，除了偶尔的调整大小操作）来说，它实际上和数组一样快。
+
+- 类型参数保持了类型安全性
+
+### 缺点
+
+- 在内部使用数组，因此在中间插入元素可能会有点慢（只有在列表非常大或经常进行此操作时才会注意到）。
