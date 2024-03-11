@@ -25,6 +25,9 @@ import java.util.ArrayList;
 
 // 初始化
 ArrayList<E> objectName = new ArrayList<E>();　
+
+// 初始化直接插入数据
+List<Integer> testList = new ArrayList<>(List.of(1,3,2,7,5,8,4));
 ```
 
 :::tip

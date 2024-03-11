@@ -34,6 +34,9 @@ import java.util.LinkedList;
 LinkedList<E> list = new LinkedList<E>();   // 普通创建方法
 
 LinkedList<E> list = new LinkedList(Collection<? extends E> c); // 使用集合创建链表
+
+// 初始化直接插入数据
+List<Integer> testList = new LinkedList<>(List.of(1,3,2,7,5,8,4));
 ```
 
 ## 方法
