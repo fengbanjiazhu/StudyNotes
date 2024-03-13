@@ -35,6 +35,30 @@ JAVA 也有保留，预设的关键词。
 
 [点击查看 Java 关键词 KeyWorks](https://docs.oracle.com/javase/specs/jls/se17/html/jls-3.html#jls-3.9)
 
+### 关键字笔记
+
+相关的关键字笔记
+
+| Keywords     | notes & example                                                                    |
+| ------------ | ---------------------------------------------------------------------------------- |
+| new          | 创建新实例，大部分例子可以在 [Class 笔记中看到](../Class/basic)                    |
+| abstract     | 抽象 关键字，可以在[抽象类笔记中看到](../Class/abstract)                           |
+| static       | 静态 关键字，可以在[Class 笔记中看到](../Class/basic#class-中当静态与实例)         |
+| public       | public 关键字，可以在 [Class 修饰符笔记中看到](../Class/modifiers)                 |
+| protected    | 保护 关键字，可以在 [Class 修饰符笔记中看到](../Class/modifiers)                   |
+| default/none | 默认 关键字，可以在 [Class 修饰符笔记中看到](../Class/modifiers)                   |
+| private      | 私有 关键字，可以在 [Class 修饰符笔记中看到](../Class/modifiers)                   |
+| import       | 引入 关键字，大部分例子可以在 [Class 笔记中看到](../Class/basic)                   |
+| extends      | 继承 关键字，大部分例子可以在 [OOP 笔记中看到](../OOP/inheritance#继承关键字)      |
+| implements   | 继承 关键字，可以在 [OOP 笔记中看到](../OOP/inheritance#继承关键字)                |
+| super        | 父类 关键字，可以在 [OOP 笔记中看到](../OOP/inheritance#super)                     |
+| this         | 子类 关键字，可以在 [OOP 笔记中看到](../OOP/inheritance#this)                      |
+| final        | 最终 关键字，可以在 [OOP 笔记中看到](../OOP/inheritance#final)                     |
+| Overridden   | 覆盖 关键字，可以在 [OOP 笔记中看到](../OOP/inheritance#overridden)                |
+| break        | 终止 关键字，可以在 [流程控制笔记中看到](../ControlFlow/loopControl#break-终止)    |
+| continue     | 跳过 关键字，可以在 [流程控制笔记中看到](../ControlFlow/loopControl#continue-跳过) |
+| placeholder  | 关键字，可以在                                                                     |
+
 ## 变量 variables
 
 在 Java 语言中，所有的变量在`使用前`必须声明。
