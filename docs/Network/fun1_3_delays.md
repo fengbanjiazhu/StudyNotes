@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# 延迟
+# 延迟计算
 
 计算网络延迟很重要，所以单独开一篇。
 
@@ -109,4 +109,64 @@ s：传输速度 propagation speed (一般为**光在玻璃中的传输速度**�
 
 :::note 计算结果
 1500\*8\*150 / 5,000,000 = 0.36，就是 36%
+:::
+
+### 例题 2
+
+![delay Quiz](./images/delay_quiz_2.jpg)
+
+:::note 题目翻译
+假设图中左侧的两台主机同时开始传输大小为 1500 bytes 的数据包（start time = 0）到路由器 B。假设主机与路由器 A 之间的 link rate 为 4Mbps，而路由器 A 与路由器 B 之间的 link rate 也是 4Mbps。其中一台主机的 propagation 物理传播延迟为 2ms，另一台主机的 propagation 物理传播延迟为 3ms。路由器 A 的节点处理延迟为 0.3ms。
+:::
+
+#### 1. Calculate the time router A receives the last bit of the first packet
+
+:::info
+解析：第 1 个到达的 packet 是 Propagation 为 2ms 的那个包
+
+- L/R + D_prop(short)
+- 1500 \* 8 / 4_000_000 + 2ms = 5ms
+  :::
+
+#### 2. Calculate the time router A receives the last bit of the second packet
+
+:::info
+解析：第 2 个到达的 packet 是 Propagation 为 3ms 的那个包
+
+- L/R + D_prop(long)
+- 1500 \* 8 / 4_000_000 + 3ms = 6ms
+  :::
+
+#### 3. Calculate the time the last bit of the first packet leaves router A
+
+:::info
+解析：计算第一个包开始到路由器 A 再全部离开的时间。所以是题目 1 的延迟结果，加上 0.3ms 的 Process 延迟，再加上进入光纤的 Transmission 延迟。
+
+- Q1 + D_process + D_trans
+- 5ms + 1500 \* 8 / 4_000_000 + 0.3ms = 8.3ms
+  :::
+
+#### 4. Calculate the queueing delay (if any) of the second packet
+
+:::info
+解析：题目 3 中，8.3ms 第一个包才离开。但是题目 2 中，第二个包是 6ms 的时候到达的，再加上 0.3ms 的 Process 延迟，剩下就是第二个包等待时间。
+
+- Q3 - ( Q2 + 0.3ms )
+- 8.3ms - ( 6ms + 0.3ms ) = 2ms
+
+:::
+
+#### 5. Calculate the time the last bit of the second packet leaves router A
+
+:::info
+解析 1：计算所有延迟
+
+- L/R + D_prop(long) + D_process + D_queueing + L/R(D_trans)
+- 3ms + 3ms + 0.3ms + 2ms + 3ms = 11.3ms
+
+解析 2：题目 3 中，8.3ms 第一个包才离开。也就是第二个包 8.3ms 之后才可以开始计算进入光纤的 Transmission 延迟
+
+- Q4 + L/R
+- 8.3ms + 3ms = 11.3ms
+
 :::
