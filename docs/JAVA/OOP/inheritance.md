@@ -8,13 +8,27 @@ sidebar_position: 2
 
 对象可以从其他对象继承属性。这允许对象的子类型存在，并支持子类型的共同方面的重用，同时允许良好划分的差异。
 
-也就是 child class 继承 parent class 的特征和行为，使得子类对象（实例）具有父类的实例 Field 和 Method，或子类从父类继承 Method，使得子类具有父类相同的行为
+Java 支持单继承，这意味着子类**只能有一个父类**。
+
+子类继承了父类的所有数据和方法，尽管可能无法访问父类的私有成员。
 
 而实际上，我们在使用 Java 的过程中处处都存在着继承，具体可以查看[java.lang 这篇笔记](../Class/java_lang/java_lang)
 
+在 Java 术语中，父类称为超类（superclass），子类称为子类（subclass）。superclass 是更广阔的类型，而 subclass 则是更具体的类型。
+
+:::tip 抽象类 abstract
+Java 中，还可以创建一种**未完成的 Class**，尤其子类来完成。
+
+这允许提取常见但不完整的功能，以最大化代码重用并支持多态性。
+
+这种就是 Abstract Class。具体的笔记可以看这里。
+
+类似之前的 List 类，
+:::
+
 ## Extends 继承
 
-JAVA 使用 extend 继承(与 JS 一样)，使用 super()来调用父 Class 的构造函数。
+JAVA 使用 `extends + 父类的名称` 继承(与 JS 一样)，使用 super()来调用父 Class 的构造函数。
 
 与 JS 不同的是，不是调用 constructor() 而是创建一个新的(如下面的 public Child())
 
@@ -32,6 +46,16 @@ class Child extends Parent {
   }
 }
 ```
+
+:::info 层次结构
+继承可以形成一个层次结构，其中类按照父子关系进行排列。例如，如果类 A 扩展了类 B，并且类 B 扩展了类 C：
+
+- A 是 B 和 C 的 subclass，从两者那里继承了属性。
+- B 是 C 的 subclass，从 C 那里继承了属性，但也作为 A 的超类。
+- C 是 A 和 B 的 superclass，从它那里继承了属性。
+
+层次结构中的每个类都可以访问其所有超类的非私有方法和数据。可以使用 super 关键字访问直接超类，并且可以通过 super(...) 调用直接超类的构造函数，类似于使用 this(...) 调用同一类中的其他构造函数。
+:::
 
 ## 为什么需要继承
 
@@ -318,4 +342,32 @@ SubClass2
 来自SuperClass()
 SubClass2(int n):200
 */
+```
+
+## 动态分发 - method
+
+假设 A extends B，B extends C，而 ABC 都有各自的方法 foo，那么以下代码会调用哪个？
+
+```java
+C actuallyAnA = new A();
+actuallyAnA.foo();
+```
+
+如果 A 有的话就优先调用 A 的，继承是可以覆盖掉方法的。
+
+:::info Java 解析机制
+
+1. 从值的实际类型（而不是变量）开始查找该方法。
+2. 如果当前级别不存在该 Method 并且存在一个 superclass，则去上一个 superclass 级别并返回第 1 步。
+3. 如果没有 superclass，则抛出错误。
+
+:::
+
+## 静态分发 - data
+
+在上面的示例中，如果 A、B 和 C 都有一个名为 bar 的公共变量，那么以下代码将产生与**C 相关联**的变量，而不是 A：
+
+```java
+C actuallyAnA = new A();
+actuallyAnA.bar;
 ```
