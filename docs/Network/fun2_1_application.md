@@ -140,6 +140,38 @@ TCP (Transmission Control Protocol) 传输控制协议, 是一种面向连接的
 - 面向连接：需要在客户端和服务器进程之间建立连接
 - 每一条 TCP 连接只能有两个端点，每一条 TCP 连接只能是点对点的
 
+### 例题
+
+:::note 例题 1
+List the four broad classes of services that a transport protocol can provide. For each of the service classes, indicate if either UDP or TCP (or both) provides such a service.
+**传输协议**可以提供的四个广泛服务类别，以及 TCP 和 UDP 是否提供这些服务。
+
+1. **可靠数据传输 Reliable data transfer**：
+
+   - **描述**：确保数据在发送和接收之间可靠地传输，防止丢失、重复或乱序。
+   - **TCP 提供**：TCP（传输控制协议）提供可靠的数据传输，通过确认和重传机制来确保数据的完整性和顺序。
+
+2. **吞吐量保证** A guarantee that a certain value for throughput will be maintained：
+
+   - **描述**：保证网络的吞吐量（数据传输速率）不低于某个特定值。
+   - **TCP 和 UDP 都不提供**：TCP 和 UDP 都不直接提供吞吐量保证。
+
+3. **数据传输时间保证** A guarantee that data will be delivered within a specified amount of time：
+
+   - **描述**：确保数据在指定的时间内被传送到目的地。
+   - **TCP 和 UDP 都不提供**：TCP 和 UDP 都不直接提供数据传输时间保证。
+
+4. **安全性** Confidentiality (via encryption)：
+   - **描述**：保护数据免受未经授权的访问、篡改或窃听。
+   - **TCP 和 UDP 都不提供**：TCP 和 UDP 都不直接提供安全性。
+
+总结：
+
+- **TCP** 提供可靠数据传输，但不提供吞吐量保证、数据传输时间保证或安全性。
+- **UDP** 是一种非连接性传输协议，不提供可靠数据传输，但适用于速度和数据大小优先于安全性和可靠性的应用场景
+
+:::
+
 ### 常见 APP 使用的协议
 
 <details>

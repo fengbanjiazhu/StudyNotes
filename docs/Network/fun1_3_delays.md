@@ -10,6 +10,13 @@ sidebar_position: 3
 
 从一个 Packet 发出，到达本地路由，再发送至目标路由，延迟由四部分组成。
 
+:::tip RTT
+往返时延 RTT(Round-Trip Time)
+从发送方发送数据开始，到发送方收到来自接收方的确认，经历的总时间。
+
+可用于判断网络的通断性、测试网络时延、计算数据包丢失率等
+:::
+
 ### Nodal Processing Delay 处理延迟
 
 第一部分为**节点处理**延迟。
@@ -32,6 +39,12 @@ L：数据大小 packet length (bits)。如果数据为 byte，则要\*8 变为 
 R：数据传输速率 link transmission rate (bps)。如果给出 mbps，则要\*1,000,000 (m 就是 million)
 :::
 
+:::tip
+如果是从 Host 出发，经过传输，到达 RouterA，要计算进入 RouterA 的 L/R。
+
+后面离开 RouterA，还要计算新的 L/R (R 为后半段的速率)
+:::
+
 ### Queueing Delay 排队延迟
 
 在我们进入光纤之前，前面也会有其他的 Packet 在进入光纤。我们就需要等待他们先进入光纤，之后才能处理我们。
@@ -42,6 +55,17 @@ R：数据传输速率 link transmission rate (bps)。如果给出 mbps，则要
 排队延迟计算方式很简单，前面有几个 packet 在排队，就计算几次 Transmission Delay 数据传入延迟。
 
 例如 4.5 个排队，即 4.5 \* L/R
+:::
+
+#### 公式
+
+:::tip 什么时候没有 Queuing delay
+假设两个同样大小的包，从两个不同地方发出，分别是 d1 和 d2 的延迟，到达路由器 A 的传输速率分别是 R1 和 R2。
+如果路由 A 到路由 B 之间的传输速率是 R，什么时候没有排队延迟？
+
+Assume d1 < d2. No buffering occurs when d2 + L / R2 > d1 + L / R1 + L / R.
+
+(也就是 [D_prop_慢 + D_trans_慢] 的时间要大于 [D_prop_快 + D_trans_快 + D_trans_快]， 慢的那个得在快的那个进入 A 又离开 A 之后再到达。)
 :::
 
 ### Propagation Delay 物理传输延迟
@@ -63,7 +87,12 @@ s：传输速度 propagation speed (一般为**光在玻璃中的传输速度**�
 - 1 数据处理，大概 1-2ms
 - 2 排队延迟，前面有 N 个数据在传入光纤，就用 N\*L/R
 - 3 传入延迟，自己的数据大小 L / 传入速率 R = 多久进入光纤
-- 4 运输延迟，光纤线缆长度/传播速度 = 通过光纤的时间
+- 4 运输延迟，光纤线缆长度 m /传播速度 光速 = 通过光纤的时间
+
+:::tip
+All of these delays are fixed, except for the queuing delays, which are variable.
+除了 Queuing Delay，其他都是固定的。
+:::
 
 ![packet delays](./images/packet_delay.jpg)
 
@@ -101,7 +130,7 @@ s：传输速度 propagation speed (一般为**光在玻璃中的传输速度**�
 
 :::
 
-### 例子
+### 例题
 
 刚刚的案例中，如果给出 packet arrival rate 为 150 packet/s，计算一下流量强度。
 
@@ -169,4 +198,58 @@ s：传输速度 propagation speed (一般为**光在玻璃中的传输速度**�
 - Q4 + L/R
 - 8.3ms + 3ms = 11.3ms
 
+:::
+
+## 丢包 Packet loss
+
+queue (aka buffer) preceding link in buffer has finite capacity
+在缓冲区之前的队列（也称为缓冲区）具有有限的容量。
+
+packet arriving to full queue dropped (aka lost)
+到达已满队列的数据包被丢弃（也称为丢失）。
+
+lost packet may be retransmitted by previous node, by source end system, or not at all
+丢失的数据包可能由前一节点、源端系统重新传输，或者根本不进行重传。
+
+丢包率 所丢失数据包的数量占所发送数据包的比率
+
+## 吞吐量
+
+- throughput: rate (bits/time unit) at which bits are being sent from sender to receiver
+  - 吞吐量：单位时间内通过某个网络(或信道、接口)的数据量，单位是 b/s
+- instantaneous: rate at given point in time
+  - 瞬时速率：在给定时间点的速率
+- average: rate over longer period of time
+  - 平均速率：在较长时间段内的速率
+
+### 吞吐量例题
+
+:::note 例题 1
+
+<details>
+   <summary>点击查看例题1</summary>
+   <div>
+      <h4>
+         Suppose Host A wants to send a large file to Host B. The path from Host A to Host B has three links, of rates R1 = 500 kbps, R2 = 2 Mbps, and R3 = 1 Mbps. 
+      </h4>
+      <h5>
+         a.	Assuming no other traffic in the network, what is the throughput for the file transfer?
+      </h5>
+      <p>
+         500kbps. (吞吐量选最少的那个)
+      </p>
+      <h5>
+         b.	Suppose the file is 4 million bytes. Dividing the file size by the throughput, roughly how long will it take to transfer the file to Host B?
+      </h5>
+      <p>
+         400,000,000 * 8 / 500,000 = 64s  (Bytes * 8 /  500 kbps)
+      </p>
+      <h5>
+         c.	Repeat (a) and (b), but now with R2 reduced to 100 kbps.
+      </h5>
+      <p>
+         100kbps; 400,000,000 *8/ 100,000 = 320s
+      </p>
+   </div>
+</details>
 :::
