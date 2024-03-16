@@ -53,6 +53,13 @@ Email 系统由三个部分组成： user agents 用户代理，mail servers 邮
 
 :::
 
+<details>
+  <summary>点击查看SMTP发送邮件会话实例</summary>
+  <div>
+    ![持久链接建立图解](./images/SMTP_Email_example.jpg)
+  </div>
+</details>
+
 #### 最后传递
 
 邮件已经到达 Bob 的邮箱，接下来的工作就是将邮件的一个副本传送到 Bob 的用户代理以便显示
@@ -81,3 +88,11 @@ Email 系统由三个部分组成： user agents 用户代理，mail servers 邮
 :::
 
 ## DNS 系统
+
+DNS 系统就像一个巨大的 database，通过解析你输入的 http url，来寻找他的 ip 地址
+
+他有一个树状架构，分别是 Root > Top level domain > Authoritative
+
+TLD：Top level domain .com, .edu, .net
+
+存在这些级别是因为我们需要可伸缩性。根服务器指向顶级域名服务器，顶级域名服务器指向权威服务器。这些权威服务器将拥有映射，如果我没记错的话。
