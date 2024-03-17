@@ -36,3 +36,7 @@ def msg(name, msg):
 msg(msg="Hi!", name="Luke")
 # 我们可以手动指定参数是哪个
 ```
+
+## 抽象方法
+
+Python 的抽象方法创建请参考[这篇笔记](../OOP/inheritance#abstract-抽象方法)
