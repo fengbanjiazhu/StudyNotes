@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# 继承
+# 继承 Inheritance
 
 Python 作为一种支持面向对象编程的语言，采用了基于 Class 的系统，因此在继承方面与 Java 的方法非常相似。
 
@@ -130,4 +130,59 @@ class ConcreteChild(AbstractParent):
 obj = ConcreteChild()
 obj.hi()
 # Hi
+```
+
+## 多继承
+
+与 Java 不同的是，Python 支持多继承。
+
+只要在继承的时候，使用`,`分割多个父类即可。
+
+```Python
+class ParentA:
+    def a(self):
+        print("I'm an a.")
+
+class ParentB:
+    def b(self):
+        print("I'm a b.")
+
+class Child(ParentA, ParentB):
+    pass
+
+obj = Child()
+obj.a()
+obj.b()
+
+# I'm an a.
+# I'm a b.
+```
+
+### 多继承优先级 Priority
+
+但如果两个父类定义了相同的方法呢？或者如果两个父类继承自同一个祖父类呢？我们应该如何选择？
+
+这在面向对象编程中被称为`diamond problem 菱形问题`，不同的编程语言有不同的解决方案。
+
+Python 通过根据父类列表中的`继承顺序`来确定实现的优先级来解决这个问题。
+
+:::info Priority
+也就是**先继承的父类方法优先级更高**。
+:::
+
+```Python
+class ParentA():
+    def clash(self):
+        print("A wins!")
+
+class ParentB():
+    def clash(self):
+        print("B wins!")
+
+class Child(ParentA, ParentB):
+    pass
+
+obj = Child()
+obj.clash()
+# A wins!
 ```
