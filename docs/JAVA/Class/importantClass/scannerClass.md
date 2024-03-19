@@ -129,7 +129,9 @@ next() 与 nextLine() 区别
 
 (逻辑上说，输入 enter 为结束似乎比较好一点)
 
-### 问题
+## 问题
+
+### nextInt 问题
 
 Dr.Luke 演示了一个问题，在这里复现一下
 
@@ -212,3 +214,87 @@ class Main {
 ```
 
 ![报错](../images/scanner/issue/error_fixed.gif)
+
+### 2 个 Scanner 问题
+
+自己后来的练习中遇到了一个新的问题，导致一直不通过验证。 (code 在本地运行的时候没有出错)
+
+```java title="问题复现"
+private static List<Person> readInPeople() {
+		//stuff goes here
+		List<Person> people = new ArrayList<Person>();
+		Scanner scan = new Scanner(System.in);
+		System.out.print("How many people are there? ");
+		int number = scan.nextInt();
+		scan.nextLine();
+
+		for(int i = 1; i <= number; i ++){
+			Person newPerson = createOne();
+			people.add(newPerson);
+		}
+
+		return people;
+	}
+
+public static Person createOne(){
+        Scanner sca = new Scanner(System.in);
+		System.out.println("What type of person is it?");
+		System.out.println("1. Student");
+		System.out.println("2. Academic");
+		System.out.println("3. Code Monkey");
+		System.out.print("Enter a choice: ");
+		int type = sca.nextInt();
+		sca.nextLine();
+
+        ...
+        return instanceOfPerson
+}
+```
+
+:::warning 报错信息如下
+Exception in thread "main" java.util.NoSuchElementException
+:::
+
+#### 解决办法
+
+查询后发现原因是：关闭了第二个 Scanner，这导致了底层的 InputStream 被关闭，因此第一个 Scanner 无法再从同一个 InputStream 中读取，从而导致了 NoSuchElementException。
+
+解决方案：对于控制台应用程序，请**使用单个 Scanner 从 System.in 中读取**
+
+:::tip
+也就是不要同时开启两个 Scanner，只开启一个，将 Scanner 作为参数传进去使用。
+:::
+
+```java title="问题解决"
+private static List<Person> readInPeople() {
+		//stuff goes here
+		List<Person> people = new ArrayList<Person>();
+		Scanner scan = new Scanner(System.in);
+		System.out.print("How many people are there? ");
+		int number = scan.nextInt();
+		scan.nextLine();
+
+		for(int i = 1; i <= number; i ++){
+            // correct next line
+			Person newPerson = createOne(scan);
+			people.add(newPerson);
+		}
+
+		return people;
+	}
+// correct next line
+public static Person createOne(Scanner sca){
+        // error next line
+        // Scanner sca = new Scanner(System.in);
+		System.out.println("What type of person is it?");
+		System.out.println("1. Student");
+		System.out.println("2. Academic");
+		System.out.println("3. Code Monkey");
+		System.out.print("Enter a choice: ");
+		int type = sca.nextInt();
+		sca.nextLine();
+
+        ...
+        return instanceOfPerson
+}
+```
