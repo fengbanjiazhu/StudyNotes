@@ -34,8 +34,6 @@ sidebar_position: 8
 
 在 TCP/IP 网络中，这扇“门”称为套接字（socket），是应用层和传输层的接口，也是应用程序和网络之间的 API。
 
-有关 Socket 编程的部分，单独写在了[这篇笔记中](./fun3_2_socket_programming)
-
 <details>
   <summary>传输层和网络层的关系类比</summary>
   <div>
@@ -48,6 +46,12 @@ sidebar_position: 8
 传输层可以通过**差错恢复**、**重排序**等手段提供可靠 reliable、按序的交付服务 in-order delivery。
 
 要注意的是，传输层无法提供 `delay guarantees 延迟保证`与 `bandwidth guarantees 带宽保证`。
+
+## Socket 套接字
+
+有关 Socket 编程的部分，单独写在了[这篇笔记中](./fun3_2_socket_programming)
+
+Socket 会自动分配 port
 
 ## TCP
 
@@ -120,3 +124,51 @@ Demultiplexing 分用：
     ![常见 APP 需求](./images/demultiplexing_and_segement_header.jpg)
   </div>
 </details>
+
+### UDP Demultiplexing
+
+- 当创建数据包传输到 UDP socket 的时候，必须声明**目标 IP** 和**目标 port**
+- 当接收端收到 USP 分段数据的时候，会检查 segment 中的目标 port，并且将 UDP segment 发送到正确的 port
+- IP/UDP 数据包具有相同的目标 port，但不同的源 IP 地址和/或源 port 将被指向接收方的同一个 socket。（只要去往同一个 IP，port，不管从哪里来的，都会到同一个 socket）
+
+:::info 总结
+UDP Socket 使用两个数据来进行识别：dest 目标 IP 和 dest 目标 Port。
+
+并且只要去往同一个 dest IP 和 dest port，不管从哪里来的，都会到同一个 socket。
+:::
+
+![图文例子](./images/UDP_demultiplexing_example.png)
+
+### TCP Demultiplexing
+
+TCP 的辨认方法与 UDP 不同，TCP socket 会辨认 4 个部分：
+
+- 来源 IP
+- 来源 port
+- 目标 IP
+- 目标 port
+
+Demultiplexing：必须收到**所有的 4 个数据**，(源 IP ，目的 IP ，源 port，目的 port) 四元组进行标识，才会将 segment 传递到正确的 socket。
+
+:::note
+一个服务器可以同时拥有多个 TCP socket：
+
+- 每个 socket 由自己的 4 个数据识别
+- 每个 socket 与不同的连接客户端相关联
+
+:::
+
+![图文例子](./images/TCP_demultiplexing_example.png)
+
+:::tip 注意
+就算同一个终端，同一个来源 IP，目标 IP 和 port 都一样，但是发出请求的时候 port 不同，这个 TCP 传输就会通过 2 个不同的 Socket。
+:::
+
+### 总结
+
+:::info summary
+
+- 这两个都是基于 segment/datagram 数据上 header 中的 value 来处理。
+- USP：Demultiplexing 只需要目标 IP 和 port，且同一个目标 port 使用一个 socket。
+- TCP：Demultiplexing 需要 4 个数据，来源 IP 和 Port，目标 IP 和 Port。支持多个 socket。
+  :::
