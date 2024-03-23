@@ -53,57 +53,6 @@ sidebar_position: 8
 
 Socket 会自动分配 port
 
-## TCP
-
-TCP 全称 Transmission Control Protocol，即传输控制协议
-
-Web 最多使用的协议之一。
-
-:::info 特点
-
-- 可靠 reliable，有序运送 in-order delivery
-- 堵塞控制 congestion control
-- 流控制 flow control
-- connection setup
-
-:::
-
-## UDP
-
-User Datagram Protocol，即用户数据协议。
-
-:::info 特点
-
-- 不可靠 unreliable，无序运送 unordered delivery
-- no-frills extension of “best-effort” IP
-- UDP 发送方和接收方之间**没有握手**
-- 每个 UDP 分段独立处理，与其他分段无关
-
-:::
-
-:::tip 优点
-
-- 没有连接建立（这可能会增加往返时延）
-- 简单：发送方和接收方没有连接状态
-- header 小
-- 没有拥塞控制
-- UDP 可以随意发送数据！
-- 可以在拥塞面前运作
-
-:::
-
-所以我们可以将 UDP 应用在：
-
-- 流媒体应用程序（对丢包宽容，对速率敏感）
-- DNS
-- SNMP
-- HTTP/3
-
-当然，如果你一定要在 UDP 上进行可靠传输（例如，HTTP/3），也不是没有办法的：
-
-- 在应用层添加所需的可靠性 reliability
-- 在应用层添加拥塞控制 congestion control
-
 ## Multiplexing 复用 与 Demultiplexing 分用
 
 Multiplexing 复用：
@@ -172,3 +121,122 @@ Demultiplexing：必须收到**所有的 4 个数据**，(源 IP ，目的 IP �
 - USP：Demultiplexing 只需要目标 IP 和 port，且同一个目标 port 使用一个 socket。
 - TCP：Demultiplexing 需要 4 个数据，来源 IP 和 Port，目标 IP 和 Port。支持多个 socket。
   :::
+
+## UDP
+
+User Datagram Protocol，即用户数据协议。
+
+### UDP 特点
+
+**UDP 提供的服务**
+
+- 尽最大努力将数据包交付到目的主机 best effort service
+- 不保证投递的可靠性和顺序(有可能丢失，也可能乱序)
+- 不保证带宽及延迟要求
+- 进程到进程之间的报文交付
+- 报文完整性检查（可选）：检测并丢弃出错的报文
+
+**UDP 需要实现的功能**
+
+- 复用和分用
+- 报文检错
+
+**UDP 无连接**
+
+- UDP 发送方和接收方之间**没有握手**
+- 每个 UDP 分段独立处理，与其他分段无关
+
+:::tip 优点
+
+- 无建立连接的延迟(无 RTT)
+- 简单：发送方和接收方没有连接状态
+- header 小
+- 没有阻塞控制
+  - 应用可以通过 UDP 尽可能快速地发送数据
+  - 不限制发送速率（不进行拥塞控制和流量控制）
+
+:::
+
+所以我们可以将 UDP 应用在：
+
+- 流媒体应用程序（对丢包宽容，对速率敏感）
+- DNS
+- SNMP
+- HTTP/3
+
+当然，如果你一定要在 UDP 上进行可靠传输（例如，HTTP/3），也不是没有办法的：
+
+- 在应用层添加所需的可靠性 reliability
+- 在应用层添加拥塞控制 congestion control
+
+<details>
+  <summary>UDP简介与格式</summary>
+  <div>
+    ![UDP简介与格式](./images/UDP_intro_format.png)
+    ![UDP Header](./images/UDP_Header.jpg)
+  </div>
+</details>
+
+### 校验和 Checksum
+
+UDP 使用**校验和 Checksum**来检测传输 segment 途中的错误，比如丢失的数据。(因为 UDP 容易丢失数据)
+
+![校验和图解](./images/UDP_checksum.png)
+
+**Sender**：
+
+- 将 UDP segment 的内容(包括 UDP header 和 IP)视为 16bit 整数序列
+- 校验和：求和（按位取反和）
+- 将结果值放入 UDP checksum field
+
+**Receiver**：
+
+- 计算接收到的数据 sum
+- 检查算出的 sum 是否和 checksum field 值相同
+
+  - 不相等 - 检测到错误
+  - 相等 - 未检测到错误
+  - 但可能仍然存在错误？之后详细讨论...
+
+#### 校验和计算
+
+之后有网再做笔记，16 位计算可能是个很复杂的部分
+
+### UDP 在传输层的行为
+
+**UDP 发送方**
+
+- 处理应用层发出的数据
+- 将数据 breaks into small segments (分段数据)
+- 给 UDP segments 添加 header
+- 将 segments 传输到网络层
+
+**UDP 接收方**
+
+- 从网络层接收 segments
+- 检查 **UDP checksum** (校验和)
+- 重新组装 reassembly 数据
+- 将数据传输到 Socket
+
+### UDP 总结
+
+:::info
+简约的协议，segments 可能会丢失，乱序。尽最大努力发送数据(send and hope for the best)。
+
+优点有无握手设置(快速，无 RTT)
+:::
+
+## TCP
+
+TCP 全称 Transmission Control Protocol，即传输控制协议
+
+Web 最多使用的协议之一。
+
+:::info 特点
+
+- 可靠 reliable，有序运送 in-order delivery
+- 堵塞控制 congestion control
+- 流控制 flow control
+- connection setup
+
+:::
