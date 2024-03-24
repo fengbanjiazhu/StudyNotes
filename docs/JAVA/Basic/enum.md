@@ -70,6 +70,34 @@ public class Test
 }
 ```
 
+## 遍历
+
+可以使用 for 语句来遍历枚举元素
+
+```java
+enum Color
+{
+    RED, GREEN, BLUE;
+}
+public class MyClass {
+  public static void main(String[] args) {
+    for (Color myVar : Color.values()) {
+      System.out.println(myVar);
+    }
+  }
+}
+```
+
+## values(), ordinal() 和 valueOf()
+
+enum 定义的枚举类默认继承了 java.lang.Enum 类，并实现了 java.lang.Serializable 和 java.lang.Comparable 两个接口。
+
+values(), ordinal() 和 valueOf() 方法位于 java.lang.Enum 类中：
+
+- values() 返回枚举类中所有的值。
+- ordinal()方法可以找到每个枚举常量的索引，就像数组索引一样。
+- valueOf()方法返回指定字符串值的枚举常量。
+
 ## 深入枚举类
 
 在 Java 中，枚举被实现为一种特殊类型的类。也就是说我们可以把它看成一种 Class，内部有固定的，预声明的 Obj(也就是那些 value)
