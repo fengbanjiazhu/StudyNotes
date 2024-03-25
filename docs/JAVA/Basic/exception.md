@@ -4,6 +4,8 @@ sidebar_position: 9
 
 # 异常处理与 Try catch
 
+先把异常处理的[菜鸟文档](https://www.runoob.com/java/java-exceptions.html)放在这里，回头看过再做补充。
+
 在 Java 中，所有的错误都可以分为三种基本类型：
 
 **错误 Errors**：代表程序无法处理的问题（例如，严重的硬件故障）。
